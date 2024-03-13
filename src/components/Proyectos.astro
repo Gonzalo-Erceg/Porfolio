@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets"
+import Link from "../components/icons/Link.astro"
+import Github from "./icons/Github.astro"
+import Badge from "../components/Badge.astro"
+import { TAGS } from "./icons/Icons"
+interface Project {
+    title:string,
+    img:string,
+    description:string,
+    technologies:any[],
+    github?:string,
+    link:string
+}
+const PROYECTOS: Project[] = [{
+    title:"Lulu D. Nails",
+    img:"/img/lulu.png",
+    description:"Desarrollé una atractiva landing page para el micro emprendimiento de manicura de mi cliente, ofreciendo una presencia online impactante y funcional. La página web fue diseñada con atención a los detalles y la estética, brindando a los visitantes una experiencia visualmente agradable y fácil de navegar. ",
+    technologies: [TAGS.ASTRO,TAGS.TAILWIND, TAGS.REACT],
+    link:"https://luludnails.netlify.app"
+},
+{
+    title:"Linkaroo",
+    img:"/img/Linkaroo.png",
+    description:"Linkaroo es una App web en el que puedes guardar tus enlaces y presentarlos de manera elegante, similar a la pagina Linktree",
+    technologies:[TAGS.NEXT, TAGS.REACT,TAGS.TAILWIND],
+    link:""
+},
+{
+    title:"Diario de desarrollo",
+    img:"/img/diario.png",
+    description:"Mi blog personal dedicado a hablar sobre desarrollo de videojuegos y enfocado en utilizar herramientas open-source como el game engine Godot.",
+    technologies:[TAGS.ASTRO,TAGS.TAILWIND],
+    link:"https://gonzalo-erceg.github.io/blog/",
+    github:"https://github.com/Gonzalo-Erceg/blog"
+},
+{
+    title:"Tic-tac3",
+    img:"/img/tictac.png",
+    description:"",
+    technologies:[TAGS.VITE,TAGS.REACT,TAGS.THREEJS],
+    link:"https://gonzalo-erceg.github.io/tic-tac3/",
+    github:"https://github.com/Gonzalo-Erceg/tic-tac3"
+}
+]
+---
+
+
+
+<div>
+    {PROYECTOS.map(items=><article class="flex flex-col md:flex-row gap-10 w-full my-10">
+    <div class="w-full md:w-1/2">
+            <Image src={items.img} height={250} width={400} alt={items.title} class="rounded-xl  "/>
+        </div>
+            
+            <div class="w-full md:w-1/2">
+                <h3 class="text-3xl">{items.title}</h3>
+                <ul class="flex gap-4 my-4">
+                    {items.technologies.map(item=><li ><Badge title={item.title} color={item.color}><item.icon/></Badge></li>)}    
+                </ul>
+                <p>{items.description}</p>
+                <div class="flex my-5 gap-4">
+              
+                    <a class="py-2 px-1 rounded-md border border-blue-600 bg-slate-800 inline-flex gap-2" href={items.link} target="_blank"><Link/> Preview</a>
+                    {items.github && <a class="py-2 px-1 rounded-md border border-blue-600 bg-slate-800 inline-flex items-center gap-2" href={items.github} target="_blank"><Github/> Código</a>}
+                </div>
+            </div>
+        </article>)}
+</div>

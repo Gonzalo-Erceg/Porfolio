@@ -1,0 +1,29 @@
+---
+import "@fontsource-variable/onest"
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="min-h-[200vh] text-slate-50">
+		<div class="fixed inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	body {
+  		font-family: 'Onest Variable', sans-serif, system-ui;
+	}
+</style>

@@ -1,0 +1,10 @@
+---
+interface Props{
+    color:string,
+    title:string
+
+}
+const {color,title} = Astro.props
+---
+
+<span class={`${color} inline-flex py-1 px-2 rounded-full  gap-2`}> <slot/>{title}</span>
