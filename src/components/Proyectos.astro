@@ -3,7 +3,7 @@ import { Image } from "astro:assets"
 import Link from "../components/icons/Link.astro"
 import Github from "./icons/Github.astro"
 import Badge from "../components/Badge.astro"
-import { TAGS } from "./icons/Icons"
+import { TAGS } from "./icons/Icons.ts"
 interface Project {
     title:string,
     img:string,
@@ -16,14 +16,14 @@ const PROYECTOS: Project[] = [{
     title:"Lulu D. Nails",
     img:"/img/lulu.png",
     description:"Desarrollé una atractiva landing page para el micro emprendimiento de manicura de mi cliente, ofreciendo una presencia online impactante y funcional. La página web fue diseñada con atención a los detalles y la estética, brindando a los visitantes una experiencia visualmente agradable y fácil de navegar. ",
-    technologies: [TAGS.ASTRO,TAGS.TAILWIND, TAGS.REACT],
+    technologies: [TAGS.ASTRO,TAGS.TAILWIND, TAGS.REACT,TAGS.EXPRESS],
     link:"https://luludnails.netlify.app"
 },
 {
     title:"Linkaroo",
     img:"/img/Linkaroo.png",
     description:"Linkaroo es una App web en el que puedes guardar tus enlaces y presentarlos de manera elegante, similar a la pagina Linktree",
-    technologies:[TAGS.NEXT, TAGS.REACT,TAGS.TAILWIND],
+    technologies:[TAGS.NEXT, TAGS.REACT,TAGS.TAILWIND,TAGS.MONGODB],
     link:""
 },
 {
@@ -55,10 +55,11 @@ const PROYECTOS: Project[] = [{
             
             <div class="w-full md:w-1/2">
                 <h3 class="text-3xl">{items.title}</h3>
-                <ul class="flex gap-4 my-4">
+                <ul class="flex gap-4 my-4 flex-wrap">
                     {items.technologies.map(item=><li ><Badge title={item.title} color={item.color}><item.icon/></Badge></li>)}    
                 </ul>
                 <p>{items.description}</p>
+
                 <div class="flex my-5 gap-4">
               
                     <a class="py-2 px-1 rounded-md border border-blue-600 bg-slate-800 inline-flex gap-2" href={items.link} target="_blank"><Link/> Preview</a>

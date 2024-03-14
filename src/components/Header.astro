@@ -1,13 +1,33 @@
-<header class="fixed w-full">
-    <nav class="flex mt-5 justify-center   gap-20">
+<header class=" w-full transition-all fixed " >
+    <nav class="flex mt-5 justify-center items-center text-sm   z-20 w-fit py-2 px-3 rounded-full mx-auto transition-all gap-5 md:gap-20 " id="nav" >
 
             <a>Proyectos</a>
             <a>Tecnologías</a>
             <a>Sobre mi</a>
-            <a>Contacto</a>
+     
        
     </nav>
 
 
 
 </header>
+
+<style>
+
+    .move{
+        background-color: rgb(147 51 234);
+
+    }
+
+</style>
+<script>
+    window.addEventListener('scroll', function() {
+        var titulo = document.getElementById('nav');
+        var scrollPosition = window.scrollY;
+        if (scrollPosition >  50) { // Ajusta este valor según tus necesidades
+            titulo?.classList.add('move');
+        } else {
+            titulo?.classList.remove('move');
+        }
+    });
+</script>
